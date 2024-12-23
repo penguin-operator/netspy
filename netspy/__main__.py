@@ -3,13 +3,12 @@ import socket
 import ethernet
 import ipv4
 
-connection = socket.socket(
-	socket.AF_PACKET,
-	socket.SOCK_RAW,
-	socket.ntohs(3),
-)
-
 try:
+	connection = socket.socket(
+		socket.AF_PACKET,
+		socket.SOCK_RAW,
+		socket.ntohs(3),
+	)
 	while True:
 		raw = connection.recv(65536)
 		frame = ethernet.ethernet(raw)
